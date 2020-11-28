@@ -14,7 +14,7 @@ do
   partition=$(echo $output | awk '{ print $2 }' )
   if [ $usep -ge 70 ]; then
     #mv catalina.out /backup
-    sh ~/opt/tomcat/bin/startup.sh
+    sh /opt/tomcat/bin/startup.sh
     #tar catalina.out.$(date '+%Y%m%d').tar
     #rm -rf catalina.out
     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
