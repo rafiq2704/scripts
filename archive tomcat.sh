@@ -13,10 +13,10 @@ do
   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
   partition=$(echo $output | awk '{ print $2 }' )
   if [ $usep -ge 70 ]; then
-    #mv catalina.out /backup
+    mv /opt/tomcat/logs/catalina.out /opt/tomcat/logs/backup
     sh /opt/tomcat/bin/startup.sh
-    #tar catalina.out.$(date '+%Y%m%d').tar
-    #rm -rf catalina.out
+    tar -czvf /opt/tomcat/logs/backup/catalina.out.$(date '+%Y%m%d').tar /opt/tomcat/logs/backup/catalina.out
+    rm -rf /opt/tomcat/logs/backup/catalina.out
     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
   else
 	echo "Usage space is less than 70%"
