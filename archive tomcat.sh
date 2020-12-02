@@ -6,7 +6,7 @@ do
   echo $output
   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
   partition=$(echo $output | awk '{ print $2 }' )
-  if [ $usep -ge 70 ]; then
+  if [ $usep -ge 80 ]; then
     #Loop to kill all pid (if it has multiple instances)
     for i in "${pid}"
       do
@@ -18,6 +18,6 @@ do
     rm -rf /opt/tomcat/logs/backup/catalina.out
     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
   else
-	echo "Usage space is less than 70%"
+	  echo "Usage space is less than 70%"
   fi
 done
