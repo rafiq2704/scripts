@@ -23,7 +23,6 @@ do
     tar -czvf /opt/tomcat/logs/backup/catalina.out.$(date '+%Y%m%d').tar /opt/tomcat/logs/backup/catalina.out
     rm -rf /opt/tomcat/logs/backup/catalina.out
     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
-    echo "Test" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
   else
     echo "Usage space is less than 80%" | tee >> ~/healthcheck/archive_tomcat_$(date '+%Y%m%d').log
   fi
