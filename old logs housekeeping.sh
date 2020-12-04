@@ -9,7 +9,7 @@ for element in "${rep_log[@]}"
 do
    #display the directory
     echo "$element";
-    nb_log=$(find "$element" -type f -mtime +2 -name "*.log*"| wc -l)
+    nb_log=$(find "$element" -type f -mtime +2 -name "*.tar*"| wc -l)
     if [[ $nb_log != 0 ]] 
     then
             find "$element" -type f -mtime +2 -delete 
