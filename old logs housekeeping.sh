@@ -2,7 +2,7 @@
 
 # A table that contains the path of directories to clean
 rep_log=("/opt/tomcat/logs/backup")
-echo "Cleaning logs - $(date)." tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
+echo "Cleaning logs - $(date)." | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
 
 #loop for each path provided by rep_log 
 for element in "${rep_log[@]}"
@@ -13,8 +13,8 @@ do
     if [[ $nb_log != 0 ]] 
     then
             find "$element" -type f -mtime +60 -delete 
-            echo "Successfully cleaned old logs." tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
+            echo "Successfully cleaned old logs." | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
     else
-            echo "No logs to clean!" tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
+            echo "No logs to clean!" | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
     fi
 done
