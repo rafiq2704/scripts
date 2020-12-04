@@ -9,10 +9,10 @@ for element in "${rep_log[@]}"
 do
    #display the directory
     echo "$element";
-    nb_log=$(find "$element" -type f -mtime +60 -name "*.log*"| wc -l)
+    nb_log=$(find "$element" -type f -mtime +2 -name "*.log*"| wc -l)
     if [[ $nb_log != 0 ]] 
     then
-            find "$element" -type f -mtime +60 -delete 
+            find "$element" -type f -mtime +2 -delete 
             echo "Successfully cleaned old logs." | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
     else
             echo "No logs to clean!" | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
