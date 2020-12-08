@@ -12,7 +12,7 @@ do
     nb_log=$(find "$element" -type f -mtime +2 -name "*.tar*"| wc -l)
     if [[ $nb_log != 0 ]] 
     then
-            find "$element" -type f -mtime +2 -delete 
+            find "$element" -type f -mtime +2 -exec rm -f {} \; 
             echo "Successfully cleaned old logs." | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
     else
             echo "No logs to clean!" | tee >> ~/healthcheck/old_logs_housekeeping_$(date '+%Y%m%d').log
